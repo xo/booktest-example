@@ -1,8 +1,25 @@
-[plugin "oracle"]
-type="frontend"
-cmd="xo-oracle"
+# -------------------------------
+# define inputs
+[in "oracle_booktest"]
+cmd="usql --schema or://user:pass@remote/xe.oracle.docker"
 
-[project "models"]
-src="pg://booktest:booktest@localhost/booktest"
+[in "postgres_booktest"]
+url="pg://booktest:booktest@localhost/booktest"
 
-[project "queries"]
+# -------------------------------
+# define outputs
+
+# the expected output of this would be ./models/ directory
+[out "models"]
+in="oracle_booktest"
+
+# set of custom queries that would output to ./models/queries.xo.go
+[out "models/queries.xo.go"]
+in="postgres_booktest"
+type="single"
+
+# -------------------------------
+# define template sets
+[tpl "default"]
+type="go"
+path="./**.tpl"
