@@ -1,0 +1,8 @@
+[plugin "oracle"]
+type="frontend"
+cmd="xo-oracle"
+
+[project "models"]
+src="pg://booktest:booktest@localhost/booktest"
+
+[project "queries"]
