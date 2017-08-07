@@ -22,4 +22,5 @@ type="single"
 # define template sets
 [tpl "default"]
 type="go"
-path="./**.tpl"
+path="**.tpl"
+funcs="funcs.go"
